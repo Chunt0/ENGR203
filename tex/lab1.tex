@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage[margin=.9in]{geometry}
+\usepackage{xcolor}
+\title{Transient RC Circuit}
+\author{Christopher Hunt}
+\date{}
+\usepackage{graphicx} 
+\usepackage{fancyhdr}
+\usepackage{float}
+\usepackage{amsmath}
+
+
+
+\begin{document}
+\pagestyle{fancy}
+\fancyhf{}
+\rfoot{ENGR 203}
+\lfoot{Christopher Hunt}
+\lhead{Transient RC Circuit}
+\rhead{\thepage}
+\maketitle
+
+\section*{Abstract}
+This lab focuses on experimentally determining the RC time constant from a graph of an RC transient circuit output, investigating first-order differential equations, and analyzing discrepancies between theoretical expectations and simulation results. By simulating the experimental circuit using LTSpice, we will apply our theoretical understanding of first-order circuits to extract the time constant. This approach will enhance our comprehension of the relationship between theory and practice, ultimately contributing to a deeper understanding of transient circuit behavior.
+
+\section*{Equipment}
+\begin{itemize}
+    \item LTSpice
+\end{itemize}
+
+\section*{Circuit}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{fig1.png}
+  \caption{Circuit Diagram}
+  \label{fig:1}
+\end{figure}
+To find the theoretical time constant we need to find the Thevenin Resitance of the source free circuit. In the case for this circuit $R_{Th} = R_1 || R_2$.
+$$R_1 = 1k \Omega \quad R_2 = 3.3k\Omega \quad C_1 = 0.1 \mu F$$
+$$R_{Th} = R_1 || R_2=767.44 \Omega \qquad \tau=R_{Th}C = .076744 \; ms$$
+
+\section*{Simulation}
+LTSpice will be used to simulate a pulse event. The voltage source will be turned on at 0.0005 seconds and turned of at 0.0015 seconds. This is the charging phase for the capacitor. At 0.0015 seconds, the voltage source will be turned off, the data collected for the time after is the discharging phase.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{fig2.png}
+  \caption{Time vs. Voltage of RC Circuit}
+  \label{fig:2}
+\end{figure}
+\section*{Analysis}
+From this data we can use two methods to find the time constant $\tau$ for this first order RC circuit.
+\subsubsection*{Method 1}
+For the first method we will utilize the equation for the voltage across a discharging capacitor.
+$$ V_o(t) = V_o(0)e^{\frac{-t}{\tau}}$$
+$$\text{When }t = \tau \text{ then } \frac{V_o(t)}{V_o(0)} = e^{-1} = 0.368$$
+To find the time constant all we have to do is multiply the voltage across the capacitor by 0.368 and find at what time during the discharge cycle this voltage occurs. 
+$$V_o(0) = 7.67 v \quad V_o(\tau) = 7.67e^{-1} = 2.82 \; v$$
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.25\textwidth]{fig4.png}
+  \caption{Source Free RC Circuit : Time vs. Voltage : Partial Data}
+  \label{fig:3}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{fig3.png}
+  \caption{Source Free RC Circuit : Time vs. Voltage}
+  \label{fig:4}
+\end{figure}
+The charge on the capacitor before becoming source free occurs at 1.50 milliseconds. The closest data point to reach $2.82\; v$ is at 1.58 milliseconds. This gives a value of:
+$$\tau = 0.08 \; ms$$
+\subsubsection*{Method 2}
+The second method utilizes the equation of the voltage across a capacitor of an RC transient circuit.
+$$V_o(t) = V_o(\infty)+[v_o(0)=V_o(\infty)]e^{\frac{-t}{\tau}}$$
+This equation can be rearranged to find $\tau$.
+$$\frac{t_2-t_1}{ln(|V_o(t_1)-V_o(\infty)|)-ln(|V_o(t_2)-V_o(\infty)|)} = \tau$$
+By choosing two values along the charging or discharging cycles of the transient RC circuit we can find the value of $\tau$. For this exercise, let's choose $t_1 = 0.520$ milliseconds and $t_2 = 0.596$ milliseconds
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.25\textwidth]{fig5.png}
+  \caption{Time vs. Voltage : Partial Data}
+  \label{fig:5}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\textwidth]{fig6.png}
+  \caption{Source Free RC Circuit : Time vs. Voltage}
+  \label{fig:6}
+\end{figure}
+Plugging in the voltage values at times $t_1$ and $t_2$ we get:
+$$\frac{0.000596-0.00052}{ln(|1.76-7.67|)-ln(|5.48-767|)} = \tau = 0.0766 \; ms$$
+\section*{Conclusion}
+This lab focused on experimentally determining the RC time constant from a graph of an RC transient circuit output, investigating first-order differential equations, and analyzing discrepancies between theoretical expectations and simulation results. The theoretically calculated time constant was found to be $\tau = 0.076744 \; ms$. By simulating the experimental circuit using LTSpice, we applied our theoretical understanding of first-order circuits to extract the time constant. Method 1 gave us $\tau = 0.08 \; ms$ which has a percent error of 4.24\% while Method 2 gave us $\tau = 0.0766\;ms$ which has a percent error of 0.188\%. From this we can conclude that Method 2 is the more accurate method for obtaining the time constant for an RC circuit from data of a given voltage response curve.
+
+\end{document}
