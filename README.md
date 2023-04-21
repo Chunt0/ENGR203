@@ -16,10 +16,6 @@ All homework assignments for the class will be stored in the `homework` director
 
 All lab assignments for the class will be stored in the `labs` directory. Each lab will have its own subdirectory, with the name format `labX` where X is the lab number.
 
-## Data
-
-All data files used in the class will be stored in the `data` directory. Each dataset will have its own subdirectory, with the name format `dataX` where X is the dataset number.
-
 ## Resources
 
 Additional resources for the class, such as lecture notes, code samples, and other materials, will be stored in the `resources` directory.
