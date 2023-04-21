@@ -6,7 +6,6 @@ This repository contains homework, labs, data, and other resources for the ENGR2
 
 - [Homework](#homework)
 - [Labs](#labs)
-- [Data](#data)
 - [Resources](#resources)
 
 ## Homework
