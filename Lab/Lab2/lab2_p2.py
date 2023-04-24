@@ -36,6 +36,15 @@ popt, pcov = curve_fit(rlc_func, x, y)
 fit_out = np.array([rlc_func(x,popt[0], popt[1], popt[2], popt[3])])
 fit_out = fit_out.reshape(81,)
 
+# Print the estimated parameters
+print("A_1:", popt[0])
+print("A_2:", popt[1])
+print("s_1:", popt[2])
+print("s_2:", popt[3])
+print("popt:", popt)
+print("pcov:", pcov)
+
+# Print the estimated parameters
 # Create a plot of the data for the first source free current response curve
 plt.scatter(x, y, label='Data')
 plt.plot(x, fit_out, 'r', label='Fit')
@@ -44,12 +53,3 @@ plt.ylabel('Current [I_l] (A)')
 plt.title('Inductor Current vs. Time')
 plt.legend()
 plt.show()
-
-
-# Print the estimated parameters
-print("A_1:", popt[0])
-print("A_2:", popt[1])
-print("s_1:", popt[2])
-print("s_2:", popt[3])
-print("popt:", popt)
-print("pcov:", pcov)
