@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-# Define a function to read data from a file
 def read_data(filename):
     x = []
     y = []
@@ -26,18 +25,33 @@ x, y = read_data(filename)
 # Isolate the first Source Free Response
 x, y= x[:282], y[:282]
 
+
+# Create a plot of the data for the first source free current response curve
+plt.scatter(x, y)
+plt.xlabel('Time [t] (s)')
+plt.ylabel('Current [I_l] (A)')
+plt.title('Inductor Current vs. Time')
+plt.show()
+
 # Find the period of oscillation
 zero_cross = [x[index] for index, val in enumerate(y[:-1]) if val >= 0 and y[index + 1] < 0]
+
 periods = [zero_cross[i] - zero_cross[i - 1] for i in range(1, len(zero_cross))]
+
 average_period = sum(periods) / len(periods)
+
 omega_d = 2 * np.pi / average_period  # rad/s
 f_d = 1 / average_period  # Hz
+
+print(f"Average period: {average_period}")
+print(f"Angular frequency: {omega_d}")
 
 # Steps through the first source free response curve and isolates the max
 y1 = np.abs(y)
 max_y = []
 max_x = []
 step = 29
+
 for i in range(0, len(y1), step):
     temp_y = y1[i:i+step]
     new_val_index = np.argmax(temp_y)
@@ -46,46 +60,40 @@ for i in range(0, len(y1), step):
     if i > 225:
         break
 
+plt.scatter(max_x, max_y)
+plt.xlabel('Time [t] (s)')
+plt.ylabel('Current [I_l] (A)')
+plt.title('Inductor Current Maximums vs. Time')
+plt.show()
+
 # Linearize the exponential function f(t) = Ae^(-alpha*t)
 # ln(f(t)) = ln(A)+(-alpha)t
 ln_y = np.log(max_y)
 
+plt.scatter(max_x, ln_y)
+plt.xlabel('Time [t] (s)')
+plt.ylabel('Current [I_l] (A)')
+plt.title('Inductor Current Maximums vs. Time')
+plt.show()
+
 # Find the slope of the linearized function
 dy = np.array([ln_y[i] - ln_y[i-1] for i in range(1, len(ln_y))])
 dx = np.array([max_x[i] - max_x[i-1] for i in range(1, len(max_x))])
+
 slopes = np.array(dy/dx)
 slope = sum(slopes/len(slopes))
 alpha = slope * -1
+print(f"Alpha = {alpha}")
 
 # Find the y-intercept: Ln(A)
 # ln(f(t)) = -alpha*t + Ln(A) --> Ln(A) = ln(f(t)) + alpha*t
 # A = exp(ln(ft)+alpha*t)
 y_int = np.exp(ln_y[1] + alpha * max_x[1])
-
-# Print the required values
-print(f"Alpha = {alpha}")
-print(f"Angular frequency: {omega_d}")
 print(f"B_2 = {y_int}")
 
-fig, axs = plt.subplots(3, 1, figsize=(8, 10))
 
-# First subplot
-axs[0].scatter(x, y)
-axs[0].set_xlabel('Time [t] (s)')
-axs[0].set_ylabel('Current [I_l] (A)')
-axs[0].set_title('Inductor Current vs. Time')
 
-# Second subplot
-axs[1].scatter(max_x, max_y)
-axs[1].set_xlabel('Time [t] (s)')
-axs[1].set_ylabel('Current [I_l] (A)')
-axs[1].set_title('Inductor Current Maximums vs. Time')
 
-# Third subplot
-axs[2].scatter(max_x, ln_y)
-axs[2].set_xlabel('Time [t] (s)')
-axs[2].set_ylabel('Natural Log of Current [ln(I_l)]')
-axs[2].set_title('Inductor Current Maximums vs. Time')
 
-plt.tight_layout()
-plt.show()
+
+
