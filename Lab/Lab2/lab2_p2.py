@@ -41,8 +41,6 @@ print("A_1:", popt[0])
 print("A_2:", popt[1])
 print("s_1:", popt[2])
 print("s_2:", popt[3])
-print("popt:", popt)
-print("pcov:", pcov)
 
 # Print the estimated parameters
 # Create a plot of the data for the first source free current response curve
