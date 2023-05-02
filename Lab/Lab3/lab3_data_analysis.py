@@ -34,38 +34,38 @@ filename = 'ENGR203_lab3.txt'  # Replace with your actual filename
 with open(filename, 'r', encoding='utf-8') as file:
     data_string = file.read()
 
-freq, v_out = extract_data(data_string)
+freq, v_out1 = extract_data(data_string)
 
 # Transfer Function values
 values = np.arange(0.01, 100000.01, 0.05).tolist()
-s = []
-for val in values:
-    val = 1j * val
-    s.append(val)
+s = [1j * val for val in values]
 
-y, max_val, max_freq_index = transfer_func(s)
+v_out2, max_val, max_freq_index = transfer_func(s)
 hertz = [val / (2 * np.pi) for val in values]
 
 print("Transfer Function Bode Plot:")
-print("Max Vo: ", max_val)
-print("Frequency: ", hertz[max_freq_index])
+print(f"Max Vo: {max_val} dB")
+print(f"Frequency: {hertz[max_freq_index]} Hz")
 print()
-
-plt.semilogx(hertz, y)
-plt.grid(True)  # Show grid lines
-plt.xlabel('Frequency (Hz)')
-plt.ylabel('Vo (dB)')
-plt.title('Transfer Function Bode Plot')
-plt.show()
 
 print("Constructed Circuit Bode Plot:")
-print("Max Vo: ", max(v_out))
-print("Frequency: ", freq[v_out.index(max(v_out))])
+print(f"Max Vo: {max(v_out1)} dB")
+print(f"Frequency: {freq[v_out1.index(max(v_out1))]} Hz")
 print()
 
-plt.semilogx(freq, v_out)
-plt.grid(True)  # Show grid lines
-plt.xlabel('Frequency (Hz)')
-plt.ylabel('Vo (dB)')
-plt.title('Constructed Circuit Bode Plot')
+fig, axs = plt.subplots(1, 2, figsize=(15, 5))
+
+axs[0].semilogx(hertz, v_out2)
+axs[0].grid(True)
+axs[0].set_xlabel('Frequency (Hz)')
+axs[0].set_ylabel('Vo (dB)')
+axs[0].set_title('Transfer Function Bode Plot')
+
+axs[1].semilogx(freq, v_out1)
+axs[1].grid(True)
+axs[1].set_xlabel('Frequency (Hz)')
+axs[1].set_ylabel('Vo (dB)')
+axs[1].set_title('Constructed Circuit Bode Plot')
+
+plt.tight_layout()
 plt.show()
