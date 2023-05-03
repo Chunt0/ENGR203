@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[12pt]{article}
 \usepackage[margin=.9in]{geometry}
 \usepackage{xcolor}
 \usepackage{amsmath}
@@ -98,7 +98,7 @@ $$\text{Max }V_o = 23.61\;dB\qquad \omega_o = 0.79 Hz$$
 From the given transfer function (eq. 1) we can perform an Inverse Laplace Transform to acquire the corresponding time-domain function. To do this we will decompose F(s) using the method of residuals.
 \begin{equation*}
     \frac{200s}{s^2+12s+20} = \frac{A}{s+10} + \frac{B}{s+2}
-\end{eqation*}
+\end{equation*}
 \begin{align*}
     A=(s+10)F(s)|_{s=-10}=& \frac{200(-10)}{-10+2} = 250\\
     B=(s+2)F(s)|_{s=-2}=& \frac{200(-2)}{-2+10} = -50\\
