@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass[16pt]{article}
 \usepackage[margin=.9in]{geometry}
 \usepackage{xcolor}
 \usepackage{amsmath}
@@ -61,7 +61,7 @@ $$K = 200 \quad \text{ Simple Zeroes: } n = 1 \quad \text{Poles: } p_1 = 10 \;\;
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{trans_bode.png}
+    \includegraphics[width=1\textwidth]{png/trans_bode.png}
     \caption{Transfer Function Bode Plot}
     \label{fig:Transfer Function Bode Plot}
 \end{figure}
@@ -79,14 +79,14 @@ From inspection, this transfer function can be constructed using a CR-circuit fo
 op amps for the third. The design and component values can be viewed in figure 2.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{const_circ_diagram.png}
+    \includegraphics[width=1\textwidth]{png/const_circ_diagram.png}
     \caption{Constructed Circuit}
     \label{fig:Constructed Circuit}
 \end{figure}
 Running the LTSpice simulation of this circuit, taking data from Vo node, we see the corresponding Bode plot (fig. 3).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{const_bode.png}
+    \includegraphics[width=1\textwidth]{png/const_bode.png}
     \caption{Bode Plot for Constructed Circuit}
     \label{fig:Bode Constructed Circuit}
 \end{figure}
@@ -114,7 +114,7 @@ From this we can use an inverse Laplace Transform table to find the correspondin
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{theoretic_step_resp.png}
+    \includegraphics[width=1\textwidth]{png/theoretic_step_resp.png}
     \caption{Theoretically Analysed Step Response}
     \label{fig:Theoretically Analysed Step Response}
 \end{figure}
@@ -123,7 +123,7 @@ From this we can use an inverse Laplace Transform table to find the correspondin
 By initiating a step response using LTSpice, we were able to simulate the constructed circuits step response (fig. 4). 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{sim_step_resp.png}
+    \includegraphics[width=1\textwidth]{png/sim_step_resp.png}
     \caption{Simulated Step Response}
     \label{fig:Simulated Step Response}
 \end{figure}
