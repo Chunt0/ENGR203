@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1683076691 "/home/chunt/Code/ENGR203/Lab/Lab3/tex/lab3.tex" "lab3.pdf" "lab3" 1683076692
+["pdflatex"] 1683079853 "/home/chunt/Code/ENGR203/Lab/Lab3/tex/lab3.tex" "lab3.pdf" "lab3" 1683079854
   "/etc/texmf/web2c/texmf.cnf" 1664909876 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/chunt/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1683076637 14040 8efedcc5a41bcff67f53bc9a76462399 ""
   "/home/chunt/Code/ENGR203/Lab/Lab3/tex/lab3.tex" 1683076691 9749 c7a8b361419e7ddce5ba9c86b7b894ad ""
@@ -73,7 +73,7 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1664909887 1405651 8d3094fd702947e624744f8647b5e3f2 ""
   "const_bode.png" 1682978702 41854 8490b309ac4cf85e4834be02a2646e67 ""
   "const_circ_diagram.png" 1683045629 58401 14adcd2defbd7b66f49de4f8480f2133 ""
-  "lab3.aux" 1683076692 935 5bf84c609212cb9fd6aec926d1f1d269 "pdflatex"
+  "lab3.aux" 1683079854 935 5bf84c609212cb9fd6aec926d1f1d269 "pdflatex"
   "lab3.tex" 1683076691 9749 c7a8b361419e7ddce5ba9c86b7b894ad ""
   "sim_step_resp.png" 1683050533 28572 30d4d62ff159e32f61ed3294917a38eb ""
   "theoretic_step_resp.png" 1683050485 30406 5d416f1922cfcaccd6e427618035aef3 ""
