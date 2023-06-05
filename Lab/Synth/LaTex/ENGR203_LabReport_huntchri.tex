@@ -74,6 +74,15 @@ By implementing these components and configurations, the VCO design achieves pre
 
 
 \section*{\textcolor{mycolor}{Simulation}}
+We will focus on analyzing five primary nodes in this circuit. Node A serves as the starting point for the sawtooth oscillator. Nodes B and C play a crucial role in regulating the flow of charge, allowing it to either pass to ground from C1 or reducing its flow. Node D represents the AC coupling junction, responsible for eliminating the DC offset from the original sawtooth signal. Lastly, we have $V_{out1}$, which denotes the final output of the Voltage-Controlled Oscillator (VCO).
+
+To conduct the simulation, we will use LTSpice. The primary objective of the simulation is to observe the circuit's complete range when the potentiometer is fully open or closed. This will enable us to determine the full frequency range of the sawtooth oscillator. Subsequently, we will test the VC input, expecting the control voltage at VC to vary between 0 and 5 volts. Our goal is for the VCO to increase in frequency on a 1-volt-per-octave scale.
+
+Once we have thoroughly analyzed the control side of the circuit, our next step will involve examining the output AC coupling and amplification.
+
+To test the High frequency range we will begin with these conditions on the control side of the circuit, the voltage at VC will be zero, $V_{pos} = +9 v$ and $V_{neg} = -9 v$, $R_1 = 100k \Omega$ and $R_2 = 133k \Omega$. Voltage levels are taken at nodes A, B, and C.
+
+
 \vspace{5mm}
 \hrule
 
