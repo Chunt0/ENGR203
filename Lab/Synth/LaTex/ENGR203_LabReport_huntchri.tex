@@ -5,6 +5,7 @@
 \usepackage{amssymb}
 \usepackage{float}
 \usepackage{listings}
+\usepackage{booktabs}
 \lstset{
   basicstyle=\small\ttfamily,
   breaklines=true,
@@ -68,7 +69,7 @@ By implementing these components and configurations, the VCO design achieves pre
 
 
 \begin{figure}[H]
-  \includegraphics[width=1\linewidth]{vco_schem.png}
+  \includegraphics[width=1\linewidth]{png/vco_schem.png}
   \caption{VCO Schematic}
 \end{figure}
 
@@ -80,12 +81,69 @@ To conduct the simulation, we will use LTSpice. The primary objective of the sim
 
 Once we have thoroughly analyzed the control side of the circuit, our next step will involve examining the output AC coupling and amplification.
 
-To test the High frequency range we will begin with these conditions on the control side of the circuit, the voltage at VC will be zero, $V_{pos} = +9 v$ and $V_{neg} = -9 v$, $R_1 = 100k \Omega$ and $R_2 = 133k \Omega$. Voltage levels are taken at nodes A, B, and C.
+To test the high frequency range we will begin with these conditions on the control side of the circuit, the voltage at VC will be zero, $V_{pos} = +9 v$ and $V_{neg} = -9 v$, $R_1 = 100k \Omega$ and $R_2 = 133k \Omega$. Voltage levels are taken at nodes A, B, and C.
 
+\begin{center}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+    \toprule
+    Parameter & Value \\
+    \midrule
+    $R_1$ & 100k \\
+    $R_2$ & 133k \\
+    NPN Base Voltage ($V_B$) & 0.521V \\
+    PNP Base Voltage ($V_C$) & 0.00201V \\
+    Oscillator Frequency & 5,334Hz \\
+    \bottomrule
+    \end{tabular}
+    \caption{High Frequency Inputs and oscillator Response}
+    \end{table}
+\end{center}
+\vspace{-1.5cm}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.7\linewidth]{png/Figure_1.png}
+  \caption{High Frequency Simulation | Voltage at Node A}
+\end{figure}
+
+To test the low frequency range we will begin with these conditions on the control side of the circuit, the voltage at VC will be zero, $V_{pos} = +9 v$ and $V_{neg} = -9 v$, $R_1 = 200k \Omega$ and $R_2 = 33k \Omega$. Voltage levels are taken at nodes A, B, and C.
+
+\begin{center}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
+    \toprule
+    Parameter & Value \\
+    \midrule
+    $R_1$ & 200k $\Omega$ \\
+    $R_2$ & 33k $\Omega$ \\
+    NPN Base Voltage ($V_B$) & 0.370 V \\
+    PNP Base Voltage ($V_C$) & -0.1302 V \\
+    Oscillator Frequency & 18 Hz \\
+    \bottomrule
+    \end{tabular}
+    \caption{High Frequency Inputs and oscillator Response}
+    \end{table}
+\end{center}
+\vspace{-1.5cm}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.7\linewidth]{png/Figure_2.png}
+  \caption{Low Frequency Simulation | Voltage at Node A}
+\end{figure}
+
+
+The frequency range of the Oscillator is between 18 Hz and 5,334 Hz. By varying the voltage divider that is created between $V_{pos}$ and $V_{neg}$ we are able to control the speed with which the drain capacitor, $C_1$ discharges. Next we will simulate the effects of a the $VC$ input. Simulations will be done for inputs of 0 to 5 volts at 1 volt incremenets. The base frequency will be kept at the Oscillator's low value.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1\linewidth]{png/Figure_3.png}
+  \caption{Control Voltage Simulations: 1 - 5 volts}
+\end{figure}
 
 \vspace{5mm}
 \hrule
-
 
 \section*{\textcolor{mycolor}{Implementation}}
 \vspace{5mm}
