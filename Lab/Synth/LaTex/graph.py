@@ -1,24 +1,15 @@
 import matplotlib.pyplot as plt
 
-# Plotting function
-def plot_graph(filename):
-    x = []
-    y = []
-    with open(filename, 'r') as file:
-        for _ in range(999):  # Discard first 999 lines
-            next(file)
-        for line in file:
-            line = line.strip().split('\t')
-            x.append(float(line[0]))
-            y.append(float(line[1]))
-    name = filename.strip(".txt")
-    plt.plot(x, y)
-    plt.xlabel('Time (s)')
-    plt.ylabel('Voltage (v)')
-    plt.title(f"Voltage over Time Node A: {name}")
-    plt.show()
+# Data
+voltage = [0, 1, 2, 3, 4, 5]
+frequency = [18, 36.23, 74.41, 154.2, 321.0, 669.4]
 
-# Plot graphs in separate windows
-for i in range(1, 6):
-    filename = f"VC{i}.txt"
-    plot_graph(filename)
+# Create the graph
+plt.scatter(voltage, frequency)
+plt.xlabel('CV Input Voltage (V)')
+plt.ylabel('Frequency (Hz)')
+plt.title('CV Input Voltage vs Frequency')
+
+# Display the graph
+plt.show()
+

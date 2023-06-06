@@ -97,7 +97,7 @@ To test the high frequency range we will begin with these conditions on the cont
     Oscillator Frequency & 5,334Hz \\
     \bottomrule
     \end{tabular}
-    \caption{High Frequency Inputs and oscillator Response}
+    \caption{High Frequency Inputs and Oscillator Response}
     \end{table}
 \end{center}
 \vspace{-1.5cm}
@@ -123,7 +123,7 @@ To test the low frequency range we will begin with these conditions on the contr
     Oscillator Frequency & 18 Hz \\
     \bottomrule
     \end{tabular}
-    \caption{High Frequency Inputs and oscillator Response}
+    \caption{High Frequency Inputs and Oscillator Response}
     \end{table}
 \end{center}
 \vspace{-1.5cm}
@@ -136,9 +136,26 @@ To test the low frequency range we will begin with these conditions on the contr
 
 The frequency range of the Oscillator is between 18 Hz and 5,334 Hz. By varying the voltage divider that is created between $V_{pos}$ and $V_{neg}$ we are able to control the speed with which the drain capacitor, $C_1$ discharges. Next we will simulate the effects of a the $VC$ input. Simulations will be done for inputs of 0 to 5 volts at 1 volt incremenets. The base frequency will be kept at the Oscillator's low value.
 
+\begin{table}[H]
+\centering
+\begin{tabular}{cc}
+\toprule
+CV Input Voltage (V) & Frequency (Hz) \\
+\midrule
+0 & 18 \\
+1 & 36.23 \\
+2 & 74.41 \\
+3 & 154.2 \\
+4 & 321.0 \\
+5 & 669.4 \\
+\bottomrule
+\end{tabular}
+\caption{CV Input Voltage and Frequency}
+\end{table}
+
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1\linewidth]{png/Figure_3.png}
+  \includegraphics[width=.7\linewidth]{png/Figure_3.png}
   \caption{Control Voltage Simulations: 1 - 5 volts}
 \end{figure}
 
