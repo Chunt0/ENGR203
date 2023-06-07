@@ -156,8 +156,10 @@ CV Input Voltage (V) & Frequency (Hz) \\
 \begin{figure}[H]
   \centering
   \includegraphics[width=.7\linewidth]{png/Figure_3.png}
-  \caption{Control Voltage Simulations: 1 - 5 volts}
+  \caption{Control Voltage Simulations: 0 - 5 volts}
 \end{figure}
+
+When the CV input is increased by 1 volt increments from 0 to 5 volts, the output frequency doubles correspondingly. This exponential frequency increase aligns with the desired mapping of frequency to the 1 octave per volt standard commonly used for voltage controlled oscillators.
 
 \vspace{5mm}
 \hrule
@@ -165,6 +167,22 @@ CV Input Voltage (V) & Frequency (Hz) \\
 \section*{\textcolor{mycolor}{Implementation}}
 \vspace{5mm}
 \hrule
+
+\begin{center}
+  \begin{tabular}{cccccc}
+  \textbf{CV} & \textbf{PNP Voltage} & \textbf{NPN Voltage} & \textbf{Frequency} \\
+  \hline
+  0             & -0.129 V                    & 0.461 V                  & 18.5 Hz                 \\
+  1.01          & -0.0979 V                    & 0.492 V                  & 53.2 Hz                 \\
+  2.002         & -0.0701 V                   & 0.519 V                  & 148.7 Hz                 \\
+  3.046         & -0.0399 V                   & 0.549 V                  & 467.1 Hz                 \\
+  4.01          & -0.0143 V                   & 0.56 V                  & 1255 Hz                   \\
+  5.01          & 0.0134 V                   & 0.602 V                  & 3610 Hz                  \\
+  \end{tabular}
+\end{center}
+
+  
+  
 
 \section*{\textcolor{mycolor}{Conclusion}}
 Summary of the lab and its outcomes
