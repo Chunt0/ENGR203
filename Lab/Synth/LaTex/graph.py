@@ -1,29 +1,31 @@
 import matplotlib.pyplot as plt
-import numpy as np
 
-freq = [18.5, 4854]
+# Read data from the text file
+data = []
+with open('./data/output.txt', 'r') as file:
+    for line in file:
+        values = line.split('\t')
+        data.append([float(values[0]), float(values[1]), float(values[2])])
 
-# Read data from each file
-for i in range(2):
-    filename = f"./data/CCV{i}.txt"
-    x = []
-    y = []
-    with open(filename, 'r') as file:
-        for line in file:
-            values = line.strip().split()
-            x.append(float(values[0]))
-            y.append(float(values[1]))
-    # Shift x-axis values to start at zero
-    min_x = x[0]
-    x = [val - min_x for val in x]
+# Extract the columns
+x_axis = [row[0] for row in data]
+V_d = [row[1] for row in data]
+V_out = [row[2] for row in data]
+
+# Plot V_d vs x_axis
+plt.figure(1)
+plt.plot(x_axis, V_d, label='V_d')
+plt.xlabel('Time (s)')
+plt.ylabel('Voltage (v)')
+plt.title('Simulated Voltage Over Time at Node D')
 
 
-    # Create a new figure and plot
-    plt.figure()
-    plt.plot(x, y)
-    plt.xlabel('Time (s)')
-    plt.ylabel('Voltage (v)')
-    plt.title(f'Voltage over Time at Node A: High Frequency - {freq[i]} Hz')
+# Plot V_out vs x_axis
+plt.figure(2)
+plt.plot(x_axis, V_out, label='V_out')
+plt.xlabel('Time (s)')
+plt.ylabel('Voltage (v)')
+plt.title('Simulated Voltage Over Time at V_out1')
 
-    # Display the plot for each data set
-    plt.show()
+# Display the graphs
+plt.show()
