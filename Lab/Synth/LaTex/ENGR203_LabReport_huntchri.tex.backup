@@ -81,11 +81,12 @@ To conduct the simulation, we will use LTSpice. The primary objective of the sim
 
 Once we have thoroughly analyzed the control side of the circuit, our next step will involve examining the output AC coupling and amplification.
 
-To test the high-frequency range, we will begin with these conditions on the control side of the circuit: the voltage at VC will be zero, $V_{pos} = +9 V$, and $V_{neg} = -9 V$, $R_1 = 100k \Omega$, and $R_2 = 133k \Omega$. Voltage levels are taken at nodes A, B, and C.
+To test the high frequency range we will begin with these conditions on the control side of the circuit, the voltage at VC will be zero, $V_{pos} = +9 v$ and $V_{neg} = -9 v$, $R_1 = 100k \Omega$ and $R_2 = 133k \Omega$. Voltage levels are taken at nodes A, B, and C.
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{ll}
+\begin{center}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
     \toprule
     Parameter & Value \\
     \midrule
@@ -95,21 +96,23 @@ To test the high-frequency range, we will begin with these conditions on the con
     PNP Base Voltage ($V_C$) & 0.00201V \\
     Oscillator Frequency & 5,334Hz \\
     \bottomrule
-  \end{tabular}
-  \caption{High-Frequency Inputs and Oscillator Response}
-\end{table}
+    \end{tabular}
+    \caption{High Frequency Inputs and Oscillator Response}
+    \end{table}
+\end{center}
 \vspace{-1.5cm}
 \begin{figure}[H]
   \centering
   \includegraphics[width=.7\linewidth]{png/Figure_1.png}
-  \caption{High-Frequency Simulation | Voltage at Node A}
+  \caption{High Frequency Simulation | Voltage at Node A}
 \end{figure}
 
-To test the low-frequency range, we will begin with these conditions on the control side of the circuit: the voltage at VC will be zero, $V_{pos} = +9 V$, and $V_{neg} = -9 V$, $R_1 = 200k \Omega$, and $R_2 = 33k \Omega$. Voltage levels are taken at nodes A, B, and C.
+To test the low frequency range we will begin with these conditions on the control side of the circuit, the voltage at VC will be zero, $V_{pos} = +9 v$ and $V_{neg} = -9 v$, $R_1 = 200k \Omega$ and $R_2 = 33k \Omega$. Voltage levels are taken at nodes A, B, and C.
 
-\begin{table}[H]
-  \centering
-  \begin{tabular}{ll}
+\begin{center}
+  \begin{table}[H]
+    \centering
+    \begin{tabular}{ll}
     \toprule
     Parameter & Value \\
     \midrule
@@ -119,34 +122,35 @@ To test the low-frequency range, we will begin with these conditions on the cont
     PNP Base Voltage ($V_C$) & -0.1302 V \\
     Oscillator Frequency & 18 Hz \\
     \bottomrule
-  \end{tabular}
-  \caption{Low-Frequency Inputs and Oscillator Response}
-\end{table}
+    \end{tabular}
+    \caption{High Frequency Inputs and Oscillator Response}
+    \end{table}
+\end{center}
 \vspace{-1.5cm}
 \begin{figure}[H]
   \centering
   \includegraphics[width=.7\linewidth]{png/Figure_2.png}
-  \caption{Low-Frequency Simulation | Voltage at Node A}
+  \caption{Low Frequency Simulation | Voltage at Node A}
 \end{figure}
 
 
-The frequency range of the Oscillator is between 18 Hz and 5,334 Hz. By varying the voltage divider that is created between $V_{pos}$ and $V_{neg}$, we are able to control the speed with which the drain capacitor, $C_1$, discharges. Next, we will simulate the effects of the $VC$ input. Simulations will be done for inputs of 0 to 5 volts at 1-volt increments. The base frequency will be kept at the Oscillator's low value.
+The frequency range of the Oscillator is between 18 Hz and 5,334 Hz. By varying the voltage divider that is created between $V_{pos}$ and $V_{neg}$ we are able to control the speed with which the drain capacitor, $C_1$ discharges. Next we will simulate the effects of a the $VC$ input. Simulations will be done for inputs of 0 to 5 volts at 1 volt incremenets. The base frequency will be kept at the Oscillator's low value.
 
 \begin{table}[H]
-  \centering
-  \begin{tabular}{cc}
-    \toprule
-    \textbf{CV Input Voltage (V)} & \textbf{Frequency (Hz)} \\
-    \midrule
-    0 & 18 \\
-    1 & 36.23 \\
-    2 & 74.41 \\
-    3 & 154.2 \\
-    4 & 321.0 \\
-    5 & 669.4 \\
-    \bottomrule
-  \end{tabular}
-  \caption{CV Input Voltage and Frequency}
+\centering
+\begin{tabular}{cc}
+\toprule
+\textbf{CV Input Voltage (V)} & \textbf{Frequency (Hz)} \\
+\midrule
+0 & 18 \\
+1 & 36.23 \\
+2 & 74.41 \\
+3 & 154.2 \\
+4 & 321.0 \\
+5 & 669.4 \\
+\bottomrule
+\end{tabular}
+\caption{CV Input Voltage and Frequency}
 \end{table}
 
 \begin{figure}[H]
@@ -155,21 +159,20 @@ The frequency range of the Oscillator is between 18 Hz and 5,334 Hz. By varying 
   \caption{Control Voltage Simulations: 0 - 5 volts}
 \end{figure}
 
-When the CV input is increased by 1-volt increments from 0 to 5 volts, the output frequency doubles correspondingly. This exponential frequency increase aligns with the desired mapping of frequency to the 1 octave per volt standard commonly used for voltage-controlled oscillators.
+When the CV input is increased by 1 volt increments from 0 to 5 volts, the output frequency doubles correspondingly. This exponential frequency increase aligns with the desired mapping of frequency to the 1 octave per volt standard commonly used for voltage controlled oscillators.
 
 \vspace{5mm}
 \hrule
-  
-\section*{\textcolor{mycolor}{Implementation}}
-Implementation is next. The circuit was built out on a breadboard (Figure 5). In this design, a potentiometer was used for coarse tuning, and a 1k $\Omega$ trim pot and 1k $\Omega$ in series were used for $R_4$ to aid in attaining the desired voltage at the base of the PNP transistor.
 
+\section*{\textcolor{mycolor}{Implementation}}
+Implementatation is next. The circuit was built out on a breadboard (Figure 5). In this design a potentiometer was used for coarse tuning and a 1k $\Omega$ trim pot and 1k $\Omega$ in series was used for $R_4$ to aid in attaining the desired voltage at the base of the PNP transistor.
 \begin{figure}[H]
   \centering
   \includegraphics[width=1\linewidth]{png/vco_breadboard.png}
   \caption{Breadboarded VCO Circuit}
 \end{figure}
 
-First, we will simulate the maximum frequency of the oscillator (Figure 6). With this circuit configuration, the maximum frequency attained is 4854 Hz.
+First we will simulate the maximum frequency of the oscillator (Figure 6). With this circuit configuration the maximum frequency attained is 4854 Hz.
 
 \begin{figure}[H]
   \centering
@@ -177,7 +180,7 @@ First, we will simulate the maximum frequency of the oscillator (Figure 6). With
   \caption{High Frequency | Voltage at Node A}
 \end{figure}
 
-Next, we will simulate the minimum frequency of the oscillator (Figure 7). With this circuit configuration, the minimum frequency attained is 18.5 Hz.
+Next we will simulate the minimum frequency of the oscillator (Figure 7). With this circuit configuration the minumum frequency attained is 18.5 Hz.
 
 \begin{figure}[H]
   \centering
@@ -190,22 +193,24 @@ To test the voltage-controlled behavior of the oscillator, testing was performed
 \begin{table}[H]
   \centering
   \begin{tabular}{cccccc}
-    \toprule
-    \textbf{CV} & \textbf{PNP Voltage} & \textbf{NPN Voltage} & \textbf{Frequency} \\
-    \midrule
-    0             & -0.129 V                    & 0.461 V                  & 18.5 Hz                 \\
-    1.01          & -0.0979 V                    & 0.492 V                  & 53.2 Hz                 \\
-    2.002         & -0.0701 V                   & 0.519 V                  & 148.7 Hz                 \\
-    3.046         & -0.0399 V                   & 0.549 V                  & 467.1 Hz                 \\
-    4.01          & -0.0143 V                   & 0.56 V                  & 1255 Hz                   \\
-    5.01          & 0.0134 V                   & 0.602 V                  & 3610 Hz                  \\
+  \toprule
+  \textbf{CV} & \textbf{PNP Voltage} & \textbf{NPN Voltage} & \textbf{Frequency} \\
+  \midrule
+  0             & -0.129 V                    & 0.461 V                  & 18.5 Hz                 \\
+  1.01          & -0.0979 V                    & 0.492 V                  & 53.2 Hz                 \\
+  2.002         & -0.0701 V                   & 0.519 V                  & 148.7 Hz                 \\
+  3.046         & -0.0399 V                   & 0.549 V                  & 467.1 Hz                 \\
+  4.01          & -0.0143 V                   & 0.56 V                  & 1255 Hz                   \\
+  5.01          & 0.0134 V                   & 0.602 V                  & 3610 Hz                  \\
   \end{tabular}
-  \caption{CV Input Voltage and Corresponding PNP and NPN Voltage and Output Frequency}
+  \caption{CV Input Voltage and Corresponding PNP and NPN voltage and Output Frequency}
 \end{table}
 
 \vspace{5mm}
 \hrule
   
+  
+
 \section*{\textcolor{mycolor}{Conclusion}}
 Summary of the lab and its outcomes
 \vspace{5mm}
