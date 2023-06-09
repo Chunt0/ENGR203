@@ -53,7 +53,7 @@ Through this project, we will gain insights into voltage-controlled oscillators,
 \section*{\textcolor{mycolor}{Design}}
 A Voltage Controlled Oscillator (VCO) is an electronic circuit that utilizes an input voltage to regulate and modify the frequency of the generated oscillating waveform. In this lab, the VCO design centers around an inverting Schmitt Trigger, which incorporates hysteresis with two distinct trigger points: a higher threshold voltage ($V_{High}$) and a lower threshold voltage ($V_{Low}$).
 
-In this specific design, an inverting Schmitt Trigger is carefully selected to achieve the desired functionality. When the circuit is powered, the Schmitt Trigger initially produces a high signal. Once the input voltage surpasses the $V_{High}$ threshold, the output switches to a low signal. Conversely, when the input voltage drops below the $V_{Low}$ threshold, the output switches back to a high signal. This behavior is achieved by employing a diode to feed the trigger's output back to its input.
+In this specific design, an inverting Schmitt Trigger is selected to achieve the desired functionality. When the circuit is powered, the Schmitt Trigger initially produces a high signal. Once the input voltage surpasses the $V_{High}$ threshold, the output switches to a low signal. Conversely, when the input voltage drops below the $V_{Low}$ threshold, the output switches back to a high signal. This behavior is achieved by employing a diode to feed the trigger's output back to its input.
 
 To introduce the voltage-controlled behavior of the oscillator, a capacitor is connected to the same input node as the Schmitt Trigger. Upon powering the circuit, the capacitor starts to charge. As soon as the voltage on the capacitor reaches the $V_{High}$ threshold, the Schmitt Trigger turns off, causing the capacitor to discharge. This discharge process extends the duration during which the input voltage remains above the $V_{Low}$ threshold.
 
@@ -241,7 +241,5 @@ In the low-frequency range, the implemented circuit achieved a minimum frequency
 When varying the control voltage (CV) from 0 to 5 volts in 1-volt increments, the implemented circuit exhibited frequency responses that closely resembled the simulated results. However, minor variations between the simulated and implemented values were observed, possibly due to factors such as component tolerances and non-linearities of the transistors.
 
 Despite these discrepancies, the implemented VCO design still achieved its main objectives of generating a voltage-controlled sawtooth waveform and providing frequency modulation based on the control voltage. The circuit demonstrated the anticipated exponential increase in frequency with increasing control voltage, indicating the successful incorporation of voltage control.
-\vspace{5mm}
-\hrule
 
 \end{document}
