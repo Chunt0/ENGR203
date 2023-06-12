@@ -34,9 +34,9 @@
 \section*{\textcolor{mycolor}{Objective}}
 The aim of this lab is to design and analyze a simple sawtooth oscillator based on an inverting Schmitt trigger circuit designed by Moritz Klein. The oscillator's frequency is controlled by a voltage input, which modulates the behavior of an NPN transistor. We will investigate the signals that control the NPN transistor and study its response characteristics. The project will involve building the oscillator circuit, implementing signal analysis techniques, and exploring the effects of different control voltages on the oscillator's output waveform.
 
-To accomplish the objectives of this lab project, we will first construct the sawtooth oscillator circuit using an inverting Schmitt trigger and NPN transistor. We will then examine the behavior of the NPN transistor by studying the signals that control its openness. Additionally, operational amplifiers and AC coupling will be used to eliminate DC offset and enhance the quality of the output waveform.
+To accomplish the objectives of this lab project, we will first construct the sawtooth oscillator circuit using an inverting Schmitt trigger and NPN transistor. We will then examine the behavior of the NPN transistor by studying the signals that control its openness. LTSpice will be used to simulate the oscillator and analyze the effect of a control voltage to the output frequency of the generated sawtooth wave. This will be compared to measurements taken from the circuit design implemented using hardware. The circuit will additionally contain an output component which consist of operational amplifiers and AC coupling. This will be used to eliminate DC offset and enhance the quality of the output waveform.
 
-Through this project, we will gain insights into voltage-controlled oscillators, NPN transistor behavior, and the impact of control signals on the oscillator's output.
+Through this project, we will gain insights into voltage-controlled oscillators, NPN and PNP transistor behavior, and the impact of control signals on the oscillator's output.
 \vspace{5mm}
 \hrule
 
@@ -157,22 +157,6 @@ The frequency range of the Oscillator is between 18 Hz and 5,334 Hz. By varying 
 
 When the CV input is increased by 1-volt increments from 0 to 5 volts, the output frequency doubles correspondingly. This exponential frequency increase aligns with the desired mapping of frequency to the 1 octave per volt standard commonly used for voltage-controlled oscillators.
 
-Next we will investigate Node D and the final output $V_{out1}$ (Figures 5 and 6). At Node D we see the signal is now centered around 0 volts with a peak to peak voltage of .91 volts.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.7\linewidth]{png/nodeD.png}
-  \caption{Node D: AC Coupling to Remove DC offset}
-\end{figure}
-
-After the DC offset has been removed, the signal is again amplified and the final output is measured to be 2.83 volts peak to peak.
-
-\begin{figure}[H]
-  \centering
-  \includegraphics[width=.7\linewidth]{png/Vout1.png}
-  \caption{$V_{out1}$: Final output of VCO}
-\end{figure}
-
 \vspace{5mm}
 \hrule
   
@@ -185,7 +169,7 @@ Implementation is next. The circuit was built out on a breadboard (Figure 5). In
   \caption{Breadboarded VCO Circuit}
 \end{figure}
 
-First, we will simulate the maximum frequency of the oscillator (Figure 6). With this circuit configuration, the maximum frequency attained is 4854 Hz.
+First, we will generate the maximum frequency of the oscillator (Figure 6). With this circuit configuration, the maximum frequency attained is 4854 Hz.
 
 \begin{figure}[H]
   \centering
@@ -193,7 +177,7 @@ First, we will simulate the maximum frequency of the oscillator (Figure 6). With
   \caption{High Frequency | Voltage at Node A}
 \end{figure}
 
-Next, we will simulate the minimum frequency of the oscillator (Figure 7). With this circuit configuration, the minimum frequency attained is 18.5 Hz.
+Next, we will generate the minimum frequency of the oscillator (Figure 7). With this circuit configuration, the minimum frequency attained is 18.5 Hz.
 
 \begin{figure}[H]
   \centering
@@ -232,13 +216,11 @@ To test the voltage-controlled behavior of the oscillator, testing was performed
 
 The Voltage Controlled Oscillator (VCO) design proved to be successful in achieving its objective of creating a functional and versatile oscillator circuit. By comparing the simulated values with the implemented values, we can assess the performance and identify any discrepancies.
 
-During simulation, the VCO circuit exhibited the expected behavior, with the frequency range aligning closely with the simulated values. However, upon implementation on a breadboard, there were slight deviations between the simulated and implemented values.
+During simulation, the VCO circuit exhibited the expected behavior, with the frequency range aligning closely with the simulated values. However, upon implementation on a breadboard, there were slight deviations between the simulated and implemented values. In particular we see the frequency increase observed during implementation when the control voltage is incremeneted by 1 volt steps does not strictly maintain the 1 octave per volt standard. Instead the frequency increase was tripled per 1 volt incremenet. More testing will need to be conducted to understand the root of this steeper exponential increase.
 
-Specifically, in the high-frequency range, the implemented circuit demonstrated a maximum frequency of 4,854 Hz, slightly lower than the simulated value of 5,334 Hz. This discrepancy may be attributed to the limitations and non-idealities of the physical components used in the breadboard implementation, such as variations in component tolerances and parasitic effects.
+With respect to the over all range of the VCO, the high-frequency range, in the implemented circuit, demonstrated a maximum frequency of 4,854 Hz, slightly lower than the simulated value of 5,334 Hz. This discrepancy may be attributed to the limitations and non-idealities of the physical components used in the breadboard implementation, such as variations in component tolerances and parasitic effects.
 
 In the low-frequency range, the implemented circuit achieved a minimum frequency of 18.5 Hz, which closely matched the simulated value. This suggests that the circuit design was effective in producing the desired low-frequency output.
-
-When varying the control voltage (CV) from 0 to 5 volts in 1-volt increments, the implemented circuit exhibited frequency responses that closely resembled the simulated results. However, minor variations between the simulated and implemented values were observed, possibly due to factors such as component tolerances and non-linearities of the transistors.
 
 Despite these discrepancies, the implemented VCO design still achieved its main objectives of generating a voltage-controlled sawtooth waveform and providing frequency modulation based on the control voltage. The circuit demonstrated the anticipated exponential increase in frequency with increasing control voltage, indicating the successful incorporation of voltage control.
 
